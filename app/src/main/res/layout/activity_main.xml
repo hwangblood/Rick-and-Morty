@@ -1,150 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/header_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintDimensionRatio="h,16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[7]" />
+    <data>
 
-    <TextView
-        android:id="@+id/name_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:gravity="center"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_image"
-        tools:text="Rick Sanchez" />
+        <variable
+            name="viewModel"
+            type="online.zhenhong.rickandmorty.SharedViewModel" />
 
-    <TextView
-        android:id="@+id/status_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/name_value"
-        app:layout_constraintStart_toStartOf="@id/name_value"
-        app:layout_constraintTop_toBottomOf="@+id/name_value"
-        tools:text="Alive" />
+    </data>
 
-    <TextView
-        android:id="@+id/origin_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Origin"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="24sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@id/name_value"
-        app:layout_constraintStart_toStartOf="@id/gender_value"
-        app:layout_constraintTop_toBottomOf="@+id/species_value" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/origin_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/origin_label"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/origin_label"
-        app:layout_constraintTop_toBottomOf="@+id/origin_label"
-        tools:text="Earth (C-137)" />
+        <ImageView
+            android:id="@+id/header_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{viewModel.character.image}"
+            app:layout_constraintDimensionRatio="h,16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic[7]" />
+
+        <TextView
+            android:id="@+id/name_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:text="@{viewModel.character.name}"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_image"
+            tools:text="Rick Sanchez" />
+
+        <TextView
+            android:id="@+id/status_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{viewModel.character.status}"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/name_value"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/name_value"
+            app:layout_constraintTop_toBottomOf="@+id/name_value"
+            app:statusColor="@{viewModel.character.status}"
+            tools:text="Alive" />
+
+        <TextView
+            android:id="@+id/origin_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Origin"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@id/name_value"
+            app:layout_constraintStart_toStartOf="@id/gender_value"
+            app:layout_constraintTop_toBottomOf="@+id/species_value" />
+
+        <TextView
+            android:id="@+id/origin_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.character.origin.name}"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/origin_label"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/origin_label"
+            app:layout_constraintTop_toBottomOf="@+id/origin_label"
+            tools:text="Earth (C-137)" />
 
 
-    <TextView
-        android:id="@+id/location_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Location"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="24sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@+id/origin_value"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/origin_value"
-        app:layout_constraintTop_toBottomOf="@+id/origin_value" />
+        <TextView
+            android:id="@+id/location_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Location"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@+id/origin_value"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/origin_value"
+            app:layout_constraintTop_toBottomOf="@+id/origin_value" />
 
-    <TextView
-        android:id="@+id/location_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/location_label"
-        app:layout_constraintStart_toStartOf="@+id/location_label"
-        app:layout_constraintTop_toBottomOf="@+id/location_label"
-        tools:text="Earth (Replacement Dimension)" />
+        <TextView
+            android:id="@+id/location_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.character.location.name}"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/location_label"
+            app:layout_constraintStart_toStartOf="@+id/location_label"
+            app:layout_constraintTop_toBottomOf="@+id/location_label"
+            tools:text="Earth (Replacement Dimension)" />
 
-    <TextView
-        android:id="@+id/gender_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Gender"
-        android:layout_marginTop="16dp"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="24sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toStartOf="@+id/species_label"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status_value" />
+        <TextView
+            android:id="@+id/gender_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Gender"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@+id/species_label"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/status_value" />
 
-    <TextView
-        android:id="@+id/species_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Species"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="24sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/gender_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/gender_label"
-        app:layout_constraintTop_toTopOf="@+id/gender_label" />
+        <TextView
+            android:id="@+id/species_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Species"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/gender_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/gender_label"
+            app:layout_constraintTop_toTopOf="@+id/gender_label" />
 
-    <TextView
-        android:id="@+id/gender_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/gender_label"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/gender_label"
-        app:layout_constraintTop_toBottomOf="@+id/gender_label"
-        tools:text="Male" />
+        <TextView
+            android:id="@+id/gender_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.character.gender}"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/gender_label"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/gender_label"
+            app:layout_constraintTop_toBottomOf="@+id/gender_label"
+            tools:text="Male" />
 
-    <TextView
-        android:id="@+id/species_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/species_label"
-        app:layout_constraintStart_toStartOf="@+id/species_label"
-        app:layout_constraintTop_toBottomOf="@+id/species_label"
-        tools:text="Human" />
+        <TextView
+            android:id="@+id/species_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.character.species}"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/species_label"
+            app:layout_constraintStart_toStartOf="@+id/species_label"
+            app:layout_constraintTop_toBottomOf="@+id/species_label"
+            tools:text="Human" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
