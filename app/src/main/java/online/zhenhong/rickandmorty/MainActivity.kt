@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.refreshCharacter(12)
+        viewModel.refreshCharacter(21)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
