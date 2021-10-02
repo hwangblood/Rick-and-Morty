@@ -5,6 +5,12 @@
       <map>
         <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/drawable/outline_female_24.xml" value="0.25729166666666664" />
         <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/layout/character_detail_not_epoxy.xml" value="0.23743589743589744" />
+        <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/layout/layout_main.xml" value="0.2" />
+        <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/layout/model_card.xml" value="0.24114583333333334" />
+        <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/layout/model_character_detail_image.xml" value="0.12083333333333333" />
+        <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/layout/model_character_detail_info.xml" value="0.4" />
+        <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/layout/model_loading.xml" value="0.2" />
         <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.25729166666666664" />
       </map>
     </option>

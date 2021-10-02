@@ -24,6 +24,7 @@
             app:imageUrl="@{viewModel.character.image}"
             app:layout_constraintDimensionRatio="h,16:9"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/backgrounds/scenic[7]" />
@@ -82,7 +83,6 @@
             app:layout_constraintStart_toStartOf="@+id/origin_label"
             app:layout_constraintTop_toBottomOf="@+id/origin_label"
             tools:text="Earth (C-137)" />
-
 
         <TextView
             android:id="@+id/location_label"
