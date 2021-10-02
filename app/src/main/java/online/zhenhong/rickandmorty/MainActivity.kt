@@ -2,8 +2,11 @@ package online.zhenhong.rickandmorty
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import coil.load
 import online.zhenhong.rickandmorty.databinding.ActivityMainBinding
 import online.zhenhong.rickandmorty.network.CharacterResponse
 import online.zhenhong.rickandmorty.network.RickAndMortyApiService
@@ -14,6 +17,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -34,8 +38,16 @@ class MainActivity : AppCompatActivity() {
                         ).show()
                     } else {
                         val character = response.body()!!
-                        val name = character.name
-                        binding.textView.text = name
+                        binding.nameValue.text = character.name
+                        binding.statusValue.text = character.status
+                        setStatusColor(binding.statusValue, character.status)
+
+                        binding.genderValue.text = character.gender
+                        binding.speciesValue.text = character.species
+                        binding.originValue.text = character.origin.name
+                        binding.locationValue.text = character.location.name
+
+                        binding.headerImage.load(character.image)
                     }
                 }
 
@@ -43,5 +55,20 @@ class MainActivity : AppCompatActivity() {
                     Log.d("CHARACTER", t.localizedMessage)
                 }
             })
+    }
+
+    private fun setStatusColor(statusView: TextView, status: String) {
+        var textColor: Int = R.color.status_unknown
+
+        if (status.equals("alive", true)) {
+            textColor = R.color.status_alive
+        } else if (status.equals("dead", true)) {
+            textColor = R.color.status_dead
+        }
+
+        // https://stackoverflow.com/questions/4602902/how-to-set-the-text-color-of-textview-in-code
+        statusView.setTextColor(ContextCompat.getColor(applicationContext, textColor))
+
+
     }
 }
