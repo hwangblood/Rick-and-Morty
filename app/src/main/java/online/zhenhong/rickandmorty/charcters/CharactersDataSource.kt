@@ -7,15 +7,20 @@ import online.zhenhong.rickandmorty.network.CharacterResponse
 
 class CharactersDataSource(
     private val coroutineScope: CoroutineScope,
-    private val charactersRepository: CharactersRepository
+    private val repository: CharactersRepository
 ) : PageKeyedDataSource<Int, CharacterResponse>() {
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, CharacterResponse>
     ) {
         coroutineScope.launch {
-            val characterList = charactersRepository.getCharacterList(1)
-            callback.onResult(characterList, null, 2)
+            val page = repository.getCharactersPage(1)
+
+            if (page == null) {
+                callback.onResult(emptyList(), null, null)
+                return@launch
+            }
+            callback.onResult(page.results, null, getNextPageUrl(page.info.next))
         }
     }
 
@@ -24,8 +29,13 @@ class CharactersDataSource(
         callback: LoadCallback<Int, CharacterResponse>
     ) {
         coroutineScope.launch {
-            val characterList = charactersRepository.getCharacterList(params.key)
-            callback.onResult(characterList, params.key + 1)
+            val page = repository.getCharactersPage(params.key)
+
+            if (page == null) {
+                callback.onResult(emptyList(), null)
+                return@launch
+            }
+            callback.onResult(page.results, getNextPageUrl(page.info.next))
         }
     }
 
@@ -34,5 +44,9 @@ class CharactersDataSource(
         callback: LoadCallback<Int, CharacterResponse>
     ) {
         // nothing to do
+    }
+
+    private fun getNextPageUrl(next: String?): Int? {
+        return next?.split("?page=")?.get(1)?.toInt()
     }
 }

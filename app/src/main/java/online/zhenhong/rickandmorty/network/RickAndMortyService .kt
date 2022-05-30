@@ -1,8 +1,10 @@
 package online.zhenhong.rickandmorty.network
 
+import online.zhenhong.rickandmorty.charcters.CharactersPageResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * A public interface that exposes the Rick and Morty API methods.
@@ -16,4 +18,8 @@ interface RickAndMortyService {
      */
     @GET("character/{id}")
     suspend fun getCharacterById(@Path("id") id: Int): Response<CharacterResponse>
+
+
+    @GET("character")
+    suspend fun getCharactersPage(@Query("page") pageIndex: Int): Response<CharactersPageResponse>
 }
