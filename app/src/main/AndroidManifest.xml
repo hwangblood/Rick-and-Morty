@@ -23,13 +23,8 @@
         </activity>
         <activity
             android:name=".charcter.detail.CharacterDetailActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"
+            android:parentActivityName=".charcter.CharacterListActivity"></activity>
     </application>
 
 </manifest>
