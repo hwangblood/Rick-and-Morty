@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import online.zhenhong.rickandmorty.Constants
+import online.zhenhong.rickandmorty.network.models.CharacterResponse
 import online.zhenhong.rickandmorty.repository.CharacterRepository
 
 class CharactersViewModel : ViewModel() {

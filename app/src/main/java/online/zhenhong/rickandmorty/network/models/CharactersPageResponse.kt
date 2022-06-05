@@ -1,4 +1,4 @@
-package online.zhenhong.rickandmorty.charcter
+package online.zhenhong.rickandmorty.network.models
 
 import com.squareup.moshi.Json
 

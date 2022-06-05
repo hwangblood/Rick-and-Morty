@@ -3,9 +3,9 @@ package online.zhenhong.rickandmorty.charcter.detail
 import android.util.Log
 import com.airbnb.epoxy.EpoxyController
 import online.zhenhong.rickandmorty.R
-import online.zhenhong.rickandmorty.charcter.CharacterResponse
 import online.zhenhong.rickandmorty.databinding.ModelCharacterDetailImageBinding
 import online.zhenhong.rickandmorty.databinding.ModelCharacterDetailInfoBinding
+import online.zhenhong.rickandmorty.domain.models.Character
 import online.zhenhong.rickandmorty.epoxy.EpoxyViewBindingModel
 import online.zhenhong.rickandmorty.epoxy.LoadingEpoxyModel
 import online.zhenhong.rickandmorty.loadImage
@@ -19,7 +19,7 @@ class CharacterDetailEpoxyController : EpoxyController() {
             if (field) requestModelBuild()
         }
 
-    var character: CharacterResponse? = null
+    var character: Character? = null
         set(value) {
             field = value
             field?.let {
@@ -61,7 +61,7 @@ class ImageEpoxyModel(val imageUrl: String) :
     }
 }
 
-class InfoEpoxyModel(val character: CharacterResponse) :
+class InfoEpoxyModel(val character: Character) :
     EpoxyViewBindingModel<ModelCharacterDetailInfoBinding>(R.layout.model_character_detail_info) {
     override fun ModelCharacterDetailInfoBinding.bind() {
         nameValue.text = character.name

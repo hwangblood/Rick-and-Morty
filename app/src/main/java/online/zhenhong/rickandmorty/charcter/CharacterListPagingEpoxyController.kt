@@ -7,6 +7,7 @@ import online.zhenhong.rickandmorty.databinding.CharacterListHeaderTitleBinding
 import online.zhenhong.rickandmorty.databinding.CharacterListItemBinding
 import online.zhenhong.rickandmorty.epoxy.EpoxyViewBindingModel
 import online.zhenhong.rickandmorty.loadImage
+import online.zhenhong.rickandmorty.network.models.CharacterResponse
 import java.util.*
 
 class CharacterListPagingEpoxyController(

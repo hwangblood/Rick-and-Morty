@@ -1,16 +1,17 @@
 package online.zhenhong.rickandmorty.repository
 
 import android.util.Log
-import online.zhenhong.rickandmorty.charcter.CharacterResponse
-import online.zhenhong.rickandmorty.charcter.CharactersPageResponse
+import online.zhenhong.rickandmorty.domain.mappers.CharacterMapper
+import online.zhenhong.rickandmorty.domain.models.Character
 import online.zhenhong.rickandmorty.network.NetworkLayer
+import online.zhenhong.rickandmorty.network.models.CharactersPageResponse
 
 class CharacterRepository {
 
-    suspend fun getCharacterById(characterId: Int): CharacterResponse? {
+    suspend fun getCharacterById(characterId: Int): Character? {
         val response = NetworkLayer.apiClient.getCharacterById(characterId)
 
-        if (response.isSuccessful) return response.body
+        if (response.isSuccessful) return CharacterMapper.buildFrom(response.body)
 
         response.exception?.let { Log.e("getCharacterById", it.localizedMessage) }
 

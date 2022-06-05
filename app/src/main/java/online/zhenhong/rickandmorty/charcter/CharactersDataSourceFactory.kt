@@ -2,6 +2,7 @@ package online.zhenhong.rickandmorty.charcter
 
 import androidx.paging.DataSource
 import kotlinx.coroutines.CoroutineScope
+import online.zhenhong.rickandmorty.network.models.CharacterResponse
 import online.zhenhong.rickandmorty.repository.CharacterRepository
 
 class CharactersDataSourceFactory(

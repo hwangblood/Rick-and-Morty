@@ -1,7 +1,7 @@
 package online.zhenhong.rickandmorty.network
 
-import online.zhenhong.rickandmorty.charcter.CharacterResponse
-import online.zhenhong.rickandmorty.charcter.CharactersPageResponse
+import online.zhenhong.rickandmorty.network.models.CharacterResponse
+import online.zhenhong.rickandmorty.network.models.CharactersPageResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
