@@ -1,6 +1,7 @@
 package online.zhenhong.rickandmorty.network
 
-import online.zhenhong.rickandmorty.charcters.CharactersPageResponse
+import online.zhenhong.rickandmorty.charcter.CharacterResponse
+import online.zhenhong.rickandmorty.charcter.CharactersPageResponse
 import retrofit2.Response
 
 class ApiClient(private val rickAndMortyService: RickAndMortyService) {
@@ -9,8 +10,8 @@ class ApiClient(private val rickAndMortyService: RickAndMortyService) {
         return safeApiCall { rickAndMortyService.getCharacterById(characterId) }
     }
 
-    suspend fun getCharactersPage(pageIndex: Int): NetworkResponse<CharactersPageResponse> {
-        return safeApiCall { rickAndMortyService.getCharactersPage(pageIndex) }
+    suspend fun getCharactersByPage(pageIndex: Int): NetworkResponse<CharactersPageResponse> {
+        return safeApiCall { rickAndMortyService.getCharactersByPage(pageIndex) }
     }
 
     private inline fun <T> safeApiCall(apiCall: () -> Response<T>): NetworkResponse<T> {

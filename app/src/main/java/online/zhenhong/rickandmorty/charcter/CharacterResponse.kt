@@ -1,4 +1,4 @@
-package online.zhenhong.rickandmorty.network
+package online.zhenhong.rickandmorty.charcter
 
 /**
  * Character for json response from web api, parsing from MoshiConverter of retrofit.

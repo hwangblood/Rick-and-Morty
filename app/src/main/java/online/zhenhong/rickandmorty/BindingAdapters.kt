@@ -2,12 +2,18 @@ package online.zhenhong.rickandmorty
 
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import coil.load
 
 @BindingAdapter("imageUrl")
 fun ImageView.loadImage(url: String?) {
+    url?.let { load(it) { crossfade(true) } }
+}
+
+@BindingAdapter("imageUrl")
+fun AppCompatImageView.loadImage(url: String?) {
     url?.let { load(it) { crossfade(true) } }
 }
 

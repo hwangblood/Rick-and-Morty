@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/01_MobileAppDev/The Android Factory/RickandMorty/app/src/main/res/layout/activity_character_list.xml" value="0.1787037037037037" />
+        <entry key="..\:/01_MobileAppDev/The Android Factory/RickandMorty/app/src/main/res/layout/activity_characters_list.xml" value="0.15" />
+        <entry key="..\:/01_MobileAppDev/The Android Factory/RickandMorty/app/src/main/res/layout/character_detail_not_epoxy.xml" value="0.1625" />
+        <entry key="..\:/01_MobileAppDev/The Android Factory/RickandMorty/app/src/main/res/layout/character_list_item.xml" value="0.16145833333333334" />
         <entry key="..\:/01_MobileAppDev/The Android Factory/RickandMorty/app/src/main/res/layout/layout_main.xml" value="0.16354166666666667" />
         <entry key="..\:/01_MobileAppDev/The Android Factory/RickandMorty/app/src/main/res/layout/model_character_detail_image.xml" value="0.16354166666666667" />
+        <entry key="..\:/01_MobileAppDev/The Android Factory/RickandMorty/app/src/main/res/layout/model_character_detail_info.xml" value="0.1625" />
+        <entry key="..\:/01_MobileAppDev/The Android Factory/RickandMorty/app/src/main/res/layout/model_loading.xml" value="0.1625" />
         <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/drawable/outline_female_24.xml" value="0.25729166666666664" />
         <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Android/StudioProjects/RickandMorty/app/src/main/res/layout/character_detail_not_epoxy.xml" value="0.23743589743589744" />

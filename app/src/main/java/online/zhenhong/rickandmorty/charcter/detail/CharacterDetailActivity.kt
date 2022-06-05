@@ -1,21 +1,21 @@
-package online.zhenhong.rickandmorty
+package online.zhenhong.rickandmorty.charcter.detail
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import online.zhenhong.rickandmorty.databinding.LayoutMainBinding
+import online.zhenhong.rickandmorty.databinding.ActivityCharacterDetailBinding
 
-class MainActivity : AppCompatActivity() {
+class CharacterDetailActivity : AppCompatActivity() {
 
-    private lateinit var binding: LayoutMainBinding
+    private lateinit var binding: ActivityCharacterDetailBinding
 
-    private val viewModel by viewModels<SharedViewModel>()
+    private val viewModel by viewModels<CharacterDetailViewModel>()
 
     private val epoxyController by lazy { CharacterDetailEpoxyController() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = LayoutMainBinding.inflate(layoutInflater)
+        binding = ActivityCharacterDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         viewModel.character.observe(this) {

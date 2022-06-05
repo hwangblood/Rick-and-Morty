@@ -1,7 +1,6 @@
-package online.zhenhong.rickandmorty.charcters
+package online.zhenhong.rickandmorty.charcter
 
 import com.squareup.moshi.Json
-import online.zhenhong.rickandmorty.network.CharacterResponse
 
 
 class CharactersPageResponse(
@@ -20,4 +19,9 @@ class CharactersPageResponse(
         @Json(name = "prev")
         val prev: String? = null
     )
+
+    val nextPageIndex: Int?
+        get() =
+            info.next?.split("page=")?.get(1)?.toInt()
+
 }

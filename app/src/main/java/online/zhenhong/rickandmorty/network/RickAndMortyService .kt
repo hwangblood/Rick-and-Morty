@@ -1,6 +1,7 @@
 package online.zhenhong.rickandmorty.network
 
-import online.zhenhong.rickandmorty.charcters.CharactersPageResponse
+import online.zhenhong.rickandmorty.charcter.CharacterResponse
+import online.zhenhong.rickandmorty.charcter.CharactersPageResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -21,5 +22,5 @@ interface RickAndMortyService {
 
 
     @GET("character")
-    suspend fun getCharactersPage(@Query("page") pageIndex: Int): Response<CharactersPageResponse>
+    suspend fun getCharactersByPage(@Query("page") pageIndex: Int): Response<CharactersPageResponse>
 }

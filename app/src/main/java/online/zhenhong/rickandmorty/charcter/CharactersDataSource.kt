@@ -1,26 +1,26 @@
-package online.zhenhong.rickandmorty.charcters
+package online.zhenhong.rickandmorty.charcter
 
 import androidx.paging.PageKeyedDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import online.zhenhong.rickandmorty.network.CharacterResponse
+import online.zhenhong.rickandmorty.repository.CharacterRepository
 
 class CharactersDataSource(
     private val coroutineScope: CoroutineScope,
-    private val repository: CharactersRepository
+    private val repository: CharacterRepository
 ) : PageKeyedDataSource<Int, CharacterResponse>() {
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, CharacterResponse>
     ) {
         coroutineScope.launch {
-            val page = repository.getCharactersPage(1)
+            val page = repository.getCharactersByPage(1)
 
             if (page == null) {
                 callback.onResult(emptyList(), null, null)
                 return@launch
             }
-            callback.onResult(page.results, null, getNextPageUrl(page.info.next))
+            callback.onResult(page.results, null, page.nextPageIndex)
         }
     }
 
@@ -28,25 +28,21 @@ class CharactersDataSource(
         params: LoadParams<Int>,
         callback: LoadCallback<Int, CharacterResponse>
     ) {
-        coroutineScope.launch {
-            val page = repository.getCharactersPage(params.key)
-
-            if (page == null) {
-                callback.onResult(emptyList(), null)
-                return@launch
-            }
-            callback.onResult(page.results, getNextPageUrl(page.info.next))
-        }
+        // nothing to do
     }
 
     override fun loadAfter(
         params: LoadParams<Int>,
         callback: LoadCallback<Int, CharacterResponse>
     ) {
-        // nothing to do
-    }
+        coroutineScope.launch {
+            val page = repository.getCharactersByPage(params.key)
 
-    private fun getNextPageUrl(next: String?): Int? {
-        return next?.split("?page=")?.get(1)?.toInt()
+            if (page == null) {
+                callback.onResult(emptyList(), null)
+                return@launch
+            }
+            callback.onResult(page.results, page.nextPageIndex)
+        }
     }
 }

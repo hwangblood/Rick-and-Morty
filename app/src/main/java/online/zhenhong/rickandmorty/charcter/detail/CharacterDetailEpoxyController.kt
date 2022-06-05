@@ -1,12 +1,15 @@
-package online.zhenhong.rickandmorty
+package online.zhenhong.rickandmorty.charcter.detail
 
 import android.util.Log
 import com.airbnb.epoxy.EpoxyController
+import online.zhenhong.rickandmorty.R
+import online.zhenhong.rickandmorty.charcter.CharacterResponse
 import online.zhenhong.rickandmorty.databinding.ModelCharacterDetailImageBinding
 import online.zhenhong.rickandmorty.databinding.ModelCharacterDetailInfoBinding
 import online.zhenhong.rickandmorty.epoxy.EpoxyViewBindingModel
 import online.zhenhong.rickandmorty.epoxy.LoadingEpoxyModel
-import online.zhenhong.rickandmorty.network.CharacterResponse
+import online.zhenhong.rickandmorty.loadImage
+import online.zhenhong.rickandmorty.setStatusColor
 
 class CharacterDetailEpoxyController : EpoxyController() {
 
@@ -43,7 +46,7 @@ class CharacterDetailEpoxyController : EpoxyController() {
         ImageEpoxyModel(character!!.image).id("header_image").addTo(this)
 
         // add info model
-        InfoModel(character!!).id("info").addTo(this)
+        InfoEpoxyModel(character!!).id("info").addTo(this)
 
         Log.d("buildModels", "buildModels finished！")
 
@@ -58,7 +61,7 @@ class ImageEpoxyModel(val imageUrl: String) :
     }
 }
 
-class InfoModel(val character: CharacterResponse) :
+class InfoEpoxyModel(val character: CharacterResponse) :
     EpoxyViewBindingModel<ModelCharacterDetailInfoBinding>(R.layout.model_character_detail_info) {
     override fun ModelCharacterDetailInfoBinding.bind() {
         nameValue.text = character.name
