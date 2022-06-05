@@ -48,7 +48,8 @@ class CharacterDetailEpoxyController : EpoxyController() {
         // add info model
         InfoEpoxyModel(character!!).id("info").addTo(this)
 
-        Log.d("buildModels", "buildModels finished！")
+        Log.d("buildModels", "buildModels finished!")
+        Log.d("buildModels", "episodeList.size = ${character!!.episodeList.size}")
 
     }
 

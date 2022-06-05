@@ -2,23 +2,23 @@ package online.zhenhong.rickandmorty
 
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import coil.load
+import coil.transform.RoundedCornersTransformation
 
 @BindingAdapter("imageUrl")
 fun ImageView.loadImage(url: String?) {
-    url?.let { load(it) { crossfade(true) } }
-}
-
-@BindingAdapter("imageUrl")
-fun AppCompatImageView.loadImage(url: String?) {
-    url?.let { load(it) { crossfade(true) } }
+    url?.let {
+        load(it) {
+            transformations(RoundedCornersTransformation(10f, 10f, 10f, 10f))
+            crossfade(true)
+        }
+    }
 }
 
 @BindingAdapter("statusColor")
-fun TextView.setStatusColor(status: String?){
+fun TextView.setStatusColor(status: String?) {
 
     var textColor: Int = R.color.status_unknown
 

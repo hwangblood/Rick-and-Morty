@@ -2,11 +2,12 @@ package online.zhenhong.rickandmorty.domain.mappers
 
 import online.zhenhong.rickandmorty.domain.models.Character
 import online.zhenhong.rickandmorty.network.models.CharacterResponse
+import online.zhenhong.rickandmorty.network.models.EpisodeResponse
 
 object CharacterMapper {
-    fun buildFrom(response: CharacterResponse): Character {
+    fun buildFrom(response: CharacterResponse, episodes: List<EpisodeResponse>): Character {
         return Character(
-            episodeList = emptyList(),// TODO: convert episode string list to object list
+            episodeList = episodes.map(EpisodeMapper::buildFrom),
             gender = response.gender,
             id = response.id,
             image = response.image,
