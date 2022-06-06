@@ -1,11 +1,15 @@
 package online.zhenhong.rickandmorty.charcter.detail
 
 import android.util.Log
+import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
 import online.zhenhong.rickandmorty.R
 import online.zhenhong.rickandmorty.databinding.ModelCharacterDetailImageBinding
 import online.zhenhong.rickandmorty.databinding.ModelCharacterDetailInfoBinding
+import online.zhenhong.rickandmorty.databinding.ModelEpisodeCarouselItemBinding
+import online.zhenhong.rickandmorty.databinding.ModelEpisodeHeaderBinding
 import online.zhenhong.rickandmorty.domain.models.Character
+import online.zhenhong.rickandmorty.domain.models.Episode
 import online.zhenhong.rickandmorty.epoxy.EpoxyViewBindingModel
 import online.zhenhong.rickandmorty.epoxy.LoadingEpoxyModel
 import online.zhenhong.rickandmorty.loadImage
@@ -48,6 +52,18 @@ class CharacterDetailEpoxyController : EpoxyController() {
         // add info model
         InfoEpoxyModel(character!!).id("info").addTo(this)
 
+        // Episode list header
+        EpisodeHeaderModel("Episodes").id("episode_header").addTo(this)
+
+        // Episode horizontal list
+        if (character!!.episodeList.isNotEmpty()) {
+            val items = character!!.episodeList.map { EpisodeCarouselItemModel(it).id(it.id) }
+            CarouselModel_().id("episode_carousel")
+                .models(items)
+                .numViewsToShowOnScreen(1.3f)
+                .addTo(this)
+        }
+
         Log.d("buildModels", "buildModels finished!")
         Log.d("buildModels", "episodeList.size = ${character!!.episodeList.size}")
 
@@ -72,5 +88,21 @@ class InfoEpoxyModel(val character: Character) :
         speciesValue.text = character.species
         originValue.text = character.origin.name
         locationValue.text = character.location.name
+    }
+}
+
+class EpisodeCarouselItemModel(private val episode: Episode) :
+    EpoxyViewBindingModel<ModelEpisodeCarouselItemBinding>(R.layout.model_episode_carousel_item) {
+    override fun ModelEpisodeCarouselItemBinding.bind() {
+        episodeText.text = episode.episode
+        episodeDetails.text = "${episode.name}\n${episode.airDate}"
+    }
+
+}
+
+class EpisodeHeaderModel(private val title: String) :
+    EpoxyViewBindingModel<ModelEpisodeHeaderBinding>(R.layout.model_episode_header) {
+    override fun ModelEpisodeHeaderBinding.bind() {
+        episodeTitle.text = title
     }
 }

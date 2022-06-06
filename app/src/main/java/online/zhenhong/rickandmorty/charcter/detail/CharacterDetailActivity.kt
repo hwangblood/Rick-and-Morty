@@ -19,9 +19,9 @@ class CharacterDetailActivity : AppCompatActivity() {
         binding = ActivityCharacterDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         viewModel.character.observe(this) {
             epoxyController.character = it
+            supportActionBar!!.title = it.name
         }
 
         val characterId = intent.getIntExtra(Constants.INTENT_EXTRA_KEY_CHARACTER_ID, 1)
