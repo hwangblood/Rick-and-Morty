@@ -1,7 +1,13 @@
 package online.zhenhong.rickandmorty.network
 
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import online.zhenhong.rickandmorty.MortyApplication
+import online.zhenhong.rickandmorty.MortyApplication.Companion.context
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -27,6 +33,7 @@ object NetworkLayer {
      * object.
      */
     private val retrofit: Retrofit = Retrofit.Builder()
+        .client(getLoggingHttpClient())
         .baseUrl(RICK_AND_MORTY_API_BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
@@ -41,4 +48,22 @@ object NetworkLayer {
     }
 
     val apiClient = ApiClient(rickAndMortyService)
+
+    private fun getLoggingHttpClient(): OkHttpClient {
+        val builder = OkHttpClient.Builder()
+        builder.addInterceptor(HttpLoggingInterceptor().apply {
+            setLevel(HttpLoggingInterceptor.Level.BASIC)
+        })
+
+        builder.addInterceptor(
+            ChuckerInterceptor.Builder(MortyApplication.context)
+                .collector(ChuckerCollector(context))
+                .maxContentLength(250000L)
+                .redactHeaders(emptySet())
+                .alwaysReadResponseBody(false)
+                .build()
+        )
+
+        return builder.build()
+    }
 }
