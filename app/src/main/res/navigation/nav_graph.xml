@@ -23,6 +23,7 @@
         android:name="online.zhenhong.rickandmorty.charcter.detail.CharacterDetailFragment"
         android:label="@string/fragment_character_detail_title"
         tools:layout="@layout/fragment_character_detail">
+        <deepLink app:uri="https://rickandmorty.hwangblood.com/character/{characterId}" />
         <argument
             android:name="characterId"
             android:defaultValue="-1"
