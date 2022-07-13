@@ -15,7 +15,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "online.zhenhong.rickandmorty"
+        applicationId "com.hwangblood.rickandmorty"
         minSdk 21
         targetSdk 30
         versionCode 1
