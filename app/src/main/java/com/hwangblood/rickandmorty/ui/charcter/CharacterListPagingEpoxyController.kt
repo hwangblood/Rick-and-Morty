@@ -1,4 +1,4 @@
-package com.hwangblood.rickandmorty.charcter
+package com.hwangblood.rickandmorty.ui.charcter
 
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging.PagedListEpoxyController

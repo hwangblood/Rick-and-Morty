@@ -1,4 +1,4 @@
-package com.hwangblood.rickandmorty.charcter
+package com.hwangblood.rickandmorty.ui.charcter
 
 import androidx.paging.PageKeyedDataSource
 import kotlinx.coroutines.CoroutineScope

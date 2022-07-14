@@ -1,4 +1,4 @@
-package com.hwangblood.rickandmorty.charcter
+package com.hwangblood.rickandmorty.ui.charcter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,13 +18,13 @@ class CharacterListFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    val viewModel by viewModels<CharactersViewModel>()
+    private val viewModel by viewModels<CharactersViewModel>()
 
     private val epoxyController by lazy { CharacterListPagingEpoxyController(::onCharacterClick) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentCharacterListBinding.inflate(inflater, container, false)
         return binding.root

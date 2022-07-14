@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/characterListFragment"
-        android:name="com.hwangblood.rickandmorty.charcter.CharacterListFragment"
+        android:name="com.hwangblood.rickandmorty.ui.charcter.CharacterListFragment"
         android:label="@string/fragment_character_list_title"
         tools:layout="@layout/fragment_character_list">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/characterDetailFragment"
-        android:name="com.hwangblood.rickandmorty.charcter.detail.CharacterDetailFragment"
+        android:name="com.hwangblood.rickandmorty.ui.charcter.detail.CharacterDetailFragment"
         android:label="@string/fragment_character_detail_title"
         tools:layout="@layout/fragment_character_detail">
         <deepLink app:uri="https://rickandmorty.hwangblood.com/character/{characterId}" />
@@ -29,4 +29,14 @@
             android:defaultValue="-1"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/episodeListFragment"
+        android:name="com.hwangblood.rickandmorty.ui.episode.EpisodeListFragment"
+        android:label="@string/fragment_episode_list_title"
+        tools:layout="@layout/fragment_episode_list" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.hwangblood.rickandmorty.ui.about.AboutFragment"
+        android:label="@string/fragment_About_title"
+        tools:layout="@layout/fragment_about" />
 </navigation>

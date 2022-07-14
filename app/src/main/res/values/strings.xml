@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Rick and Morty</string>
-    <string name="fragment_character_list_title">Characters</string>
+    <string name="fragment_character_list_title">All Characters</string>
     <string name="fragment_character_detail_title">Character Detail</string>
+    <string name="fragment_episode_list_title">All Episodes</string>
+    <string name="fragment_About_title">About</string>
 </resources>

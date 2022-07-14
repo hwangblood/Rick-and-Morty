@@ -1,4 +1,4 @@
-package com.hwangblood.rickandmorty.charcter.detail
+package com.hwangblood.rickandmorty.ui.charcter.detail
 
 import android.util.Log
 import com.airbnb.epoxy.CarouselModel_
@@ -17,7 +17,7 @@ import com.hwangblood.rickandmorty.setStatusColor
 
 class CharacterDetailEpoxyController : EpoxyController() {
 
-    var isLoading: Boolean = true
+    private var isLoading: Boolean = true
         set(value) {
             field = value
             if (field) requestModelBuild()
@@ -71,7 +71,7 @@ class CharacterDetailEpoxyController : EpoxyController() {
 
 }
 
-class ImageEpoxyModel(val imageUrl: String) :
+class ImageEpoxyModel(private val imageUrl: String) :
     EpoxyViewBindingModel<ModelCharacterDetailImageBinding>(R.layout.model_character_detail_image) {
     override fun ModelCharacterDetailImageBinding.bind() {
         headerImage.loadImage(imageUrl)

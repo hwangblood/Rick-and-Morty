@@ -1,4 +1,4 @@
-package com.hwangblood.rickandmorty.charcter.detail
+package com.hwangblood.rickandmorty.ui.charcter.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
