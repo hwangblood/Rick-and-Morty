@@ -50,6 +50,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // Set start destination selected of drawer when app launch firstly.
+        navDrawerView.setCheckedItem(navController.graph.startDestinationId)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

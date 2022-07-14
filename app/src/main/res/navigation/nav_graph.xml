@@ -37,6 +37,6 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.hwangblood.rickandmorty.ui.about.AboutFragment"
-        android:label="@string/fragment_About_title"
+        android:label="@string/fragment_about_title"
         tools:layout="@layout/fragment_about" />
 </navigation>
