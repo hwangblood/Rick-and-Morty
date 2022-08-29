@@ -28,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         val navDrawerView = binding.navDrawerView
         val drawerLayout = binding.drawerLayout
-        val topLevelDestinationIds = setOf(R.id.characterListFragment, R.id.episodeListFragment)
+        val topLevelDestinationIds =
+            setOf(R.id.characterListFragment, R.id.episodeListFragment)
 
         appBarConfiguration = AppBarConfiguration(
             topLevelDestinationIds = topLevelDestinationIds,
