@@ -3,6 +3,7 @@ package com.hwangblood.rickandmorty.network
 import com.hwangblood.rickandmorty.network.models.CharacterResponse
 import com.hwangblood.rickandmorty.network.models.CharactersPageResponse
 import com.hwangblood.rickandmorty.network.models.EpisodeResponse
+import com.hwangblood.rickandmorty.network.models.EpisodesPageResponse
 import retrofit2.Response
 
 class ApiClient(private val rickAndMortyService: RickAndMortyService) {
@@ -21,6 +22,10 @@ class ApiClient(private val rickAndMortyService: RickAndMortyService) {
 
     suspend fun getEpisodesByRange(range: String): NetworkResponse<List<EpisodeResponse>> {
         return safeApiCall { rickAndMortyService.getEpisodesByRange(range) }
+    }
+
+    suspend fun getEpisodesByPage(pageIndex: Int): NetworkResponse<EpisodesPageResponse> {
+        return safeApiCall { rickAndMortyService.getEpisodesByPage(pageIndex) }
     }
 
     private inline fun <T> safeApiCall(apiCall: () -> Response<T>): NetworkResponse<T> {

@@ -3,6 +3,7 @@ package com.hwangblood.rickandmorty.network
 import com.hwangblood.rickandmorty.network.models.CharacterResponse
 import com.hwangblood.rickandmorty.network.models.CharactersPageResponse
 import com.hwangblood.rickandmorty.network.models.EpisodeResponse
+import com.hwangblood.rickandmorty.network.models.EpisodesPageResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -34,4 +35,7 @@ interface RickAndMortyService {
      */
     @GET("episode/{range}")
     suspend fun getEpisodesByRange(@Path("range") range: String): Response<List<EpisodeResponse>>
+
+    @GET("episode/")
+    suspend  fun getEpisodesByPage(@Query("page") pageIndex: Int): Response<EpisodesPageResponse>
 }
